@@ -25,4 +25,15 @@ class Customer
     return results.map{ |customer| Customer.new(customer) }
   end
 
+  def self.delete_all()
+    sql = "DELETE FROM customers"
+    SqlRunner.run(sql)
+  end
+
+  def delete()
+    sql = "DELETE FROM customers WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+  
 end
