@@ -45,9 +45,6 @@ customer3 = Customer.new({
 customer3.save()
 
 
-# film1.price = '1000'
-# film1.update()
-
 
 binding.pry
 nil
