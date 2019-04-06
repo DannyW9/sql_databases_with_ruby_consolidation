@@ -28,15 +28,21 @@ customer1 = Customer.new({
   'funds' => '100'
   })
 
+customer1.save()
+
 customer2 = Customer.new({
   'name' => 'Gemma Morrow',
   'funds' => '150'
   })
 
+customer2.save()
+
 customer3 = Customer.new({
   'name' => 'Opie Winston',
   'funds' => '200'
   })
+
+customer3.save()
 
 
 # film1.price = '1000'
