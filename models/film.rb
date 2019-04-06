@@ -2,8 +2,8 @@ require_relative('../db/sql_runner.rb')
 
 class Film
 
-  attr_reader :id, :title
-  attr_accessor :price
+  attr_reader :id
+  attr_accessor :title, :price
 
   def initialize(details)
     @id = details['id'].to_i if details['id']
