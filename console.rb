@@ -22,6 +22,9 @@ film3 = Film.new({
 
 film3.save()
 
+# film1.price = '1000'
+# film1.update()
+
 
 binding.pry
 nil
