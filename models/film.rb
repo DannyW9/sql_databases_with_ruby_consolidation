@@ -70,4 +70,18 @@ class Film
     results = SqlRunner.run(sql, values)
     return results.map{ |screening| Screening.new(screening) }
   end
+
+  def most_popular_time()
+    sql = "SELECT COUNT(screenings.*), showing_time
+    FROM screenings
+    INNER JOIN tickets ON screenings.id = tickets.screening_id
+    WHERE tickets.film_id = $1
+    GROUP BY showing_time
+    ORDER BY COUNT(*) DESC
+    LIMIT 1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)[0]['showing_time']
+    return results
+    ## doesn't work if 2 times for the same film had sold same number of tickets
+  end
 end
