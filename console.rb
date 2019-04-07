@@ -2,6 +2,7 @@ require('pry-byebug')
 require_relative('models/film.rb')
 require_relative('models/customer.rb')
 require_relative('models/ticket.rb')
+require_relative('models/screening.rb')
 
 Ticket.delete_all()
 Film.delete_all()
@@ -89,6 +90,12 @@ customer1.update_funds()
 customer2.update_funds()
 customer3.update_funds()
 
+######### ADVANCED EXTENSIONS ##########
+
+screening1 = Screening.new({
+  'showing_time' => '19:00',
+  'film_title' => "#{film1.title}"
+  })
 
 binding.pry
 nil
