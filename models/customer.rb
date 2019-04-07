@@ -66,6 +66,21 @@ class Customer
 
     #third, update customer funds in database
     self.update()
+    #Better to do without Sql?
+    #SELECT films.price.....
+    #loop through array of returned prices and total them
+  end
+
+  def number_of_tickets()
+    sql = "SELECT COUNT(films.*) FROM films
+    INNER JOIN tickets ON films.id = tickets.film_id
+    WHERE tickets.customer_id = $1"
+    values = [@id]
+    tickets = SqlRunner.run(sql, values)[0]['count'].to_i
+    return tickets
+    #Again, better to do without Sql?
+    #Use method for returning films.
+    #Add .length/count to the resulting array?
   end
 
 
