@@ -3,6 +3,11 @@ require_relative('models/film.rb')
 require_relative('models/customer.rb')
 require_relative('models/ticket.rb')
 
+Ticket.delete_all()
+Film.delete_all()
+Customer.delete_all()
+
+
 film1 = Film.new({
   'title' => 'John Wick: Chapter 3',
   'price' => '10'
@@ -79,6 +84,10 @@ ticket5 = Ticket.new({
   })
 
 ticket5.save()
+
+customer1.update_funds()
+customer2.update_funds()
+customer3.update_funds()
 
 
 binding.pry

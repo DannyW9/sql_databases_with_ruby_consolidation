@@ -53,4 +53,20 @@ class Customer
     return results.map{ |film| Film.new(film) }
   end
 
+  def update_funds()
+    # first, find the total price of tickets bought
+    sql = "SELECT SUM(films.price) FROM films
+    INNER JOIN tickets ON films.id = tickets.film_id
+    WHERE tickets.customer_id = $1"
+    values = [@id]
+    total_price = SqlRunner.run(sql, values)[0]['sum'].to_i
+
+    #second, remove the total price from the customer funds
+    @funds -= total_price
+
+    #third, update customer funds in database
+    self.update()
+  end
+
+
 end
