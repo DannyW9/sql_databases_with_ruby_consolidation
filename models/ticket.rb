@@ -45,6 +45,18 @@ class Ticket
     SqlRunner.run(sql, values)
   end
 
+  def sell_ticket(film, screening)
+    if film.customers_attending() > screening.max_allocation
+      return "Full!"
+    else
+      save()
+    end
+  end
+
+  # Change to allocation_check. Remove the else self.save()
+  # insert the allocation_check into the .save() function before it runs
+  # Need to add film/screening arguments to .save() ?
+  # Another way to pull the film/screening details?
 
 
 

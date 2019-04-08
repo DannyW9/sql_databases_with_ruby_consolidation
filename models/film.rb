@@ -62,6 +62,11 @@ class Film
     return customers
   end
 
+  def customers_attending2()
+    results = self.customers()
+    results.length()
+  end
+
   def screenings()
     sql = "SELECT screenings.* FROM screenings
     INNER JOIN tickets ON screenings.id = tickets.screening_id

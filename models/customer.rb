@@ -83,5 +83,10 @@ class Customer
     #Add .length/count to the resulting array?
   end
 
+  def number_of_tickets_2()
+    result = self.films()
+    result.length()
+  end
+
 
 end

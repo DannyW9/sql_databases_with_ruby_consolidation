@@ -59,28 +59,32 @@ customer3.save()
 
 screening1 = Screening.new({
   'showing_time' => '19:00',
-  'film_title' => "#{film1.title}"
+  'film_title' => "#{film1.title}",
+  'max_allocation' => '3'
   })
 
 screening1.save()
 
 screening2 = Screening.new({
   'showing_time' => '22:00',
-  'film_title' => "#{film1.title}"
+  'film_title' => "#{film1.title}",
+  'max_allocation' => '3'
   })
 
 screening2.save()
 
 screening3 = Screening.new({
   'showing_time' => '17:00',
-  'film_title' => "#{film2.title}"
+  'film_title' => "#{film2.title}",
+  'max_allocation' => '3'
   })
 
 screening3.save()
 
 screening4 = Screening.new({
   'showing_time' => '20:00',
-  'film_title' => "#{film2.title}"
+  'film_title' => "#{film2.title}",
+  'max_allocation' => '3'
   })
 
 screening4.save()
@@ -93,7 +97,7 @@ ticket1 = Ticket.new({
   'screening_id' => "#{screening1.id}"
   })
 
-ticket1.save()
+ticket1.sell_ticket(film1, screening1)
 
 ticket2 = Ticket.new({
   'customer_id' => "#{customer2.id}",
@@ -101,7 +105,7 @@ ticket2 = Ticket.new({
   'screening_id' => "#{screening2.id}"
   })
 
-ticket2.save()
+ticket2.sell_ticket(film1, screening2)
 
 ticket3 = Ticket.new({
   'customer_id' => "#{customer3.id}",
@@ -109,7 +113,7 @@ ticket3 = Ticket.new({
   'screening_id' => "#{screening1.id}"
   })
 
-ticket3.save()
+ticket3.sell_ticket(film1, screening1)
 
 ticket4 = Ticket.new({
   'customer_id' => "#{customer1.id}",
@@ -117,7 +121,7 @@ ticket4 = Ticket.new({
   'screening_id' => "#{screening4.id}"
   })
 
-ticket4.save()
+ticket4.sell_ticket(film2, screening4)
 
 ticket5 = Ticket.new({
   'customer_id' => "#{customer3.id}",
@@ -125,13 +129,25 @@ ticket5 = Ticket.new({
   'screening_id' => "#{screening3.id}"
   })
 
-ticket5.save()
+ticket5.sell_ticket(film2, screening3)
 
 customer1.update_funds()
 customer2.update_funds()
 customer3.update_funds()
 
+########### LIMIT TESTS ###########
 
+ticket6 = Ticket.new({
+  'customer_id' => "#{customer3.id}",
+  'film_id' => "#{film2.id}",
+  'screening_id' => "#{screening3.id}"
+  })
+
+ticket7 = Ticket.new({
+  'customer_id' => "#{customer1.id}",
+  'film_id' => "#{film2.id}",
+  'screening_id' => "#{screening3.id}"
+  })
 
 
 binding.pry

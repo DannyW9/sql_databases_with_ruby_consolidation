@@ -5,7 +5,7 @@ DROP TABLE customers;
 
 CREATE TABLE films (
   id SERIAL PRIMARY KEY,
-  title VARCHAR --UNIQUE, --made unique for screenings to reference (should only have one entry per film anyway)
+  title VARCHAR, --UNIQUE, --made unique for screenings to reference (should only have one entry per film anyway)
   price INT
 );
 
@@ -18,7 +18,8 @@ CREATE TABLE customers (
 CREATE TABLE screenings (
   id SERIAL PRIMARY KEY,
   showing_time VARCHAR,
-  film_title VARCHAR --REFERENCES films(title) ON DELETE CASCADE
+  film_title VARCHAR, --REFERENCES films(title) ON DELETE CASCADE
+  max_allocation INT
 );
 
 CREATE TABLE tickets (
